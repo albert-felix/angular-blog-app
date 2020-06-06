@@ -1,0 +1,15 @@
+<div class="container">
+    <h3>Add New Article</h3>
+    <form #add="ngForm" (ngSubmit)="addArticle(add)">
+        <div>
+            <label class="label" for="title"><b>Title</b></label>
+            <input class="title" type="text" name="title" id="title" placeholder="Title of the Article" ngModel>
+        </div>
+        <br>
+        <div>
+            <label class="label" for="content"><b>Content</b></label>
+            <textarea class="content" name="content" cols="100" rows="5" id="content" placeholder="Start writing..." ngModel></textarea>
+        </div>
+        <br>
+        <button>Add Article</button>
+    </form>

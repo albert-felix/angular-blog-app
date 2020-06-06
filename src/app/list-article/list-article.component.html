@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>List of Articles</h3>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+          <th scope="col">Date</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of articles; index as i">
+          <th scope="row">{{ i + 1 }}</th>  
+          <td>
+            {{ article.title }}
+          </td>
+          <td>{{ article.content }}</td>
+          <td>{{ article.date }}</td>
+          <td>
+              <button class="btn-primary">Edit</button>
+              <button class="btn-danger">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+</div>
