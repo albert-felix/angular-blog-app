@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Form } from '@angular/forms';
 import { DataServiceService } from '../data-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class AddArticleComponent implements OnInit {
 
   articles = []
 
-  constructor(private dataService: DataServiceService) { }
+  constructor(private dataService: DataServiceService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -20,11 +20,11 @@ export class AddArticleComponent implements OnInit {
   }
 
   addArticle(add){
-    var newArticle = {}
-    newArticle['title'] = add.value.title;
-    newArticle['content'] = add.value.content;
+    var newArticle = add.value;
     newArticle['date'] = new Date().toString().slice(0, 16);
-    this.dataService.updateArticle(newArticle)
+    this.dataService.addArticle(newArticle)
+    alert("New article created");
+    this.router.navigateByUrl('/articles')
   }
 
 }

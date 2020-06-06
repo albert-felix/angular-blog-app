@@ -6,11 +6,11 @@
     <table class="table table-striped">
         <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Body</th>
-          <th scope="col">Date</th>
-          <th scope="col">Action</th>
+          <th style="width: 5%" scope="col">#</th>
+          <th style="width: 15%" scope="col">Title</th>
+          <th style="width: 50%" scope="col">Body</th>
+          <th style="width: 15%" scope="col">Date Published</th>
+          <th style="width: 15%" scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -22,8 +22,8 @@
           <td>{{ article.content }}</td>
           <td>{{ article.date }}</td>
           <td>
-              <button class="btn-primary">Edit</button>
-              <button class="btn-danger">Delete</button>
+              <button (click)="editArticle(i)" class="btn-primary">Edit</button>
+              <button (click)="deleteArticle(i)" class="btn-danger">Delete</button>
           </td>
         </tr>
         </tbody>

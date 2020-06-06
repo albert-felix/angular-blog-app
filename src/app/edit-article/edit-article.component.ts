@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from '../data-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-article',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditArticleComponent implements OnInit {
 
-  constructor() { }
+  articles = [];
+  isEditable;
+  index;
+
+  constructor(private dataService: DataServiceService, private router: Router) { }
 
   ngOnInit(): void {
+    this.dataService.currentArticleList.subscribe(list => this.articles = list);
+    this.dataService.currentEditState.subscribe(state => this.isEditable = state);
+    this.dataService.currentIndex.subscribe(value => this.index = value);
+  }
+
+  updateArticle(update) {
+    var editedArticle = update.value;
+    editedArticle['date'] = new Date().toString().slice(0, 16);
+    this.articles[this.index] = editedArticle;
+    this.dataService.updateArticle(this.articles);
+    this.dataService.updateEditState(!this.isEditable);
+    alert("Artilce Updated");
+    this.router.navigateByUrl('/articles')
   }
 
 }

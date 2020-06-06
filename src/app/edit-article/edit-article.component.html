@@ -1,5 +1,34 @@
 <div class="container">
-    <div class="alert alert-danger" role="alert">
-        Please use the edit option from the <b>Articles Page</b> !
-      </div>
+    <div *ngIf="isEditable" >
+        <div class="alert alert-danger" role="alert">
+            Please use the edit option from the <b>Articles Page</b> !
+          </div>
+    </div>
+    
+    
+    <div *ngIf="!isEditable">
+        <b><p>Article No. {{index +1}}</p></b>
+        <form #update="ngForm" (ngSubmit)="update.valid && updateArticle(update)">
+            <div>
+                <label class="label" for="title"><b>Title</b></label>
+                <input type="text" name="title" id="title" #title="ngModel" [ngModel]="articles[index].title" ngModel
+                    [ngClass]="{ 'is-invalid': update.submitted && title.invalid }" required>
+                <div *ngIf="update.submitted && title.invalid" class="invalid-feedback">
+                    <div>Title is required</div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <label class="label" for="content"><b>Content</b></label>
+                <textarea class="content" name="content" cols="100" rows="5" id="content" #content="ngModel" 
+                [ngModel]="articles[index].content" ngModel [ngClass]="{ 'is-invalid': update.submitted && content.invalid }" required>
+                </textarea>
+                    <div *ngIf="update.submitted && content.invalid" class="invalid-feedback">
+                        <div>Content is required</div>
+                    </div>
+            </div>
+            <br>
+            <button class="btn-success">Update Article</button>
+        </form>
+    </div>
 </div>

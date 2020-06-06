@@ -1,17 +1,17 @@
-<div >
+<div class="main">
   <h1>Blog Application</h1>
   <div>
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
       <li [ngbNavItem]="1">
-        <a routerLink="/articles" class="btn-light btn-sm" ngbNavLink>Articles</a>`
+        <a routerLink="/articles" routerLinkActive="active" class="btn-light btn-sm" ngbNavLink>Articles</a>`
 
       </li>
       <li [ngbNavItem]="2">
-        <a routerLink="/add-article" class="btn-light btn-sm" ngbNavLink>Add Article</a>
+        <a routerLink="/add-article" routerLinkActive="active" class="btn-light btn-sm" ngbNavLink>Add Article</a>
 
       </li>
       <li [ngbNavItem]="3">
-        <a routerLink="/edit-article" class="btn-light btn-sm" ngbNavLink>Edit Article</a>
+        <a routerLink="/edit-article" routerLinkActive="active" class="btn-light btn-sm" ngbNavLink>Edit Article</a>
 
       </li>
     </ul>
@@ -23,6 +23,5 @@
 </div>
 
 <footer>
-  <p>A basic blog app created using Angular !</p>
-  <p>Author: Albert Felix</p>
+  <p>A basic blog app using Angular - Albert Felix</p>
 </footer>

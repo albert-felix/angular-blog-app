@@ -1,15 +1,23 @@
 <div class="container">
     <h3>Add New Article</h3>
-    <form #add="ngForm" (ngSubmit)="addArticle(add)">
+    <form #add="ngForm" (ngSubmit)="add.valid && addArticle(add)">
         <div>
             <label class="label" for="title"><b>Title</b></label>
-            <input class="title" type="text" name="title" id="title" placeholder="Title of the Article" ngModel>
+            <input class="title" type="text" name="title" id="title" #title="ngModel" placeholder="Title of the Article" ngModel
+                [ngClass]="{ 'is-invalid': add.submitted && title.invalid }" required>
+            <div *ngIf="add.submitted && title.invalid" class="invalid-feedback">
+                <div>Title is required</div>
+            </div>
         </div>
         <br>
         <div>
             <label class="label" for="content"><b>Content</b></label>
-            <textarea class="content" name="content" cols="100" rows="5" id="content" placeholder="Start writing..." ngModel></textarea>
+            <textarea class="content" name="content" cols="100" rows="5" id="content" #content="ngModel" placeholder="Start writing..."
+                ngModel [ngClass]="{ 'is-invalid': add.submitted && content.invalid }" required></textarea>
+                <div *ngIf="add.submitted && content.invalid" class="invalid-feedback">
+                    <div>Content is required</div>
+                </div>
         </div>
         <br>
-        <button>Add Article</button>
+        <button class="btn-success">Add Article</button>
     </form>
